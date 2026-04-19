@@ -44,13 +44,13 @@
 		reset-button {
 			label = "reset";
 			linux,code = <KEY_RESTART>;
-			gpios = <&pio 0 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 1 GPIO_ACTIVE_LOW>;
 		};
 
 		mesh-button {
 			label = "mesh";
 			linux,code = <BTN_9>;
-			gpios = <&pio 1 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 0 GPIO_ACTIVE_LOW>;
 		};
 	};
 

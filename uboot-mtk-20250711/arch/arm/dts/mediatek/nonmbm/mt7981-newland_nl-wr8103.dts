@@ -7,7 +7,7 @@
 / {
 	#address-cells = <1>;
 	#size-cells = <1>;
-	model = "mt7981-newland_nl-wr8103";
+	model = "mt7981-h3c_magic-nx30-pro";
 	compatible = "mediatek,mt7981", "mediatek,mt7981-rfb";
 
 	chosen {
@@ -24,16 +24,16 @@
 	mtd-layout {
 		layout@0 {
 			label = "default";
-			// mtd layout for stock 48m ubi firmware
+			// mtd layout for stock 64m ubi firmware
 			mtdids = "spi-nand0=spi-nand0";
-			mtdparts = "spi-nand0:1024k(bl2),512k(u-boot-env),2048k(factory),2048k(fip),49152k(ubi),49152k(ubi1)";
+			mtdparts = "nmbm0:1024k(bl2),512k(u-boot-env),2048k(Factory),2048k(fip),65536k(ubi),6144k(pdt_data),6144k(pdt_data_1),1024k(exp),38400k(plugin)";
 		};
 
 		layout@1 {
-			label = "expand(114m)";
+			label = "expand(112m)";
 			// mtd layout for 114m ubi firmware
 			mtdids = "spi-nand0=spi-nand0";
-			mtdparts = "spi-nand0:1024k(bl2),512k(u-boot-env),2048k(factory),2048k(fip),116736k(ubi)";
+			mtdparts = "nmbm0:1024k(bl2),512k(u-boot-env),2048k(Factory),2048k(fip),114688k(ubi),6144k(pdt_data),6144k(pdt_data_1),1024k(exp),38400k(plugin)";
 		};
 
 	};
@@ -58,20 +58,16 @@
 		compatible = "gpio-leds";
 
 		led-0 {
-			label = "red:system";
-			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
+			label = "green:status";
+			gpios = <&pio 4 GPIO_ACTIVE_LOW>;
 		};
 
 		led-1 {
-			label = "green:system";
-			gpios = <&pio 11 GPIO_ACTIVE_LOW>;
-		};
-
-		led-2 {
-			label = "blue:system";
-			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
+			label = "red:status";
+			gpios = <&pio 5 GPIO_ACTIVE_LOW>;
 		};
 	};
+	
 	memory@40000000 {
 		device_type = "memory";
 		reg = <0x40000000 0x10000000>;
